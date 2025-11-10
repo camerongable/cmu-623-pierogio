@@ -72,15 +72,15 @@ describe('Property-Based Tests for Orders', () => {
     // Feel free to copy, paste, and modify as needed multiple times.
     // ---------------------------------------------------------------------------
     //
-    // it('subtotal should always be non-negative integer', () => {
-    //   fc.assert(
-    //     fc.property(, (order) => { // add the appropriate arbitraries here
-    //       const result = subtotal(order); // change this to the function you are testing
-    //       return result >= 0 && Number.isInteger(result); // add the property you want to verify
-    //     }),
-    //     { numRuns: 50 } // you can adjust the number of runs as needed
-    //   );
-    // });
+    it('tax is greater than zero for order with frozen item(s)', () => {
+      fc.assert(
+        fc.property(, (order) => { // add the appropriate arbitraries here
+          const result = tax(order, null); // change this to the function you are testing
+          return result >= 0; // add the property you want to verify
+        }),
+        { numRuns: 50 } // you can adjust the number of runs as needed
+      );
+    });
 
   });
 });
